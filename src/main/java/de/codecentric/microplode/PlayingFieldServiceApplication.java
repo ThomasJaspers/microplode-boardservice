@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import de.codecentric.microplode.messaging.MessageListener;
+
 
 @SpringBootApplication
 public class PlayingFieldServiceApplication {
