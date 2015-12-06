@@ -3,20 +3,21 @@ package de.codecentric.microplode.domain;
 
 public class Field {
 
-    private int fieldNum;
+    private int posX;
+
+    private int posY;
 
     private int load;
 
     private PlayerInfo occupiedBy;
     
-    public Field(int fieldNum) {
-        this.fieldNum = fieldNum;
+    public Field(int posX, int posY) {
+        this.posX = posX;
+        this.posY = posY;
         this.load = 0;
     }
 
-    public int getFieldNum() {
-        return fieldNum;
-    }
+
 
     public PlayerInfo getOccupiedBy() {
         return occupiedBy;
@@ -32,5 +33,13 @@ public class Field {
 
     public void setLoad(int load) {
         this.load = load;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
     }
 }
