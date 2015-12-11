@@ -6,6 +6,7 @@ import de.codecentric.microplode.domain.Board;
 import de.codecentric.microplode.domain.Field;
 import de.codecentric.microplode.domain.PlayerInfo;
 import de.codecentric.microplode.messaging.MessageSender;
+import de.codecentric.microplode.messaging.api.BoardChangedContainerEvent;
 import de.codecentric.microplode.messaging.api.BoardChangedEvent;
 import de.codecentric.microplode.messaging.api.EventType;
 import de.codecentric.microplode.messaging.api.FieldDef;
@@ -43,7 +44,7 @@ public class BoardAction {
 
     public void sendBoardChangedEvent() {
         BoardChangedEvent event = new BoardChangedEvent();
-        event.setType(EventType.BOARD_CHANGED_EVENT);
+        event.setType(EventType.BOARD_CHANGED_EVENT.getText());
 
         Field[][] board = this.board.getBoard();
         for (int y = 0; y < Board.BOARD_HEIGHT; y++) {
@@ -63,7 +64,10 @@ public class BoardAction {
             }
         }
 
-        messageSender.sendMessage(Queues.BOARDSERVICE_GAMESERVICE, event);
-        messageSender.sendMessage(Queues.BOARDSERVICE_PRESENTATIONSERVICE, event);
+        BoardChangedContainerEvent containerEvent = new BoardChangedContainerEvent();
+        containerEvent.setEvent(event);
+
+        messageSender.sendMessage(Queues.BOARDSERVICE_GAMESERVICE, containerEvent);
+        messageSender.sendMessage(Queues.BOARDSERVICE_PRESENTATIONSERVICE, containerEvent);
     }
 }

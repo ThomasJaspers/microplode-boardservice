@@ -5,18 +5,17 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonRootName(value="Event")
 public class BoardChangedEvent {
 
-    private EventType type;
+    private String type;
 
     private List<FieldDef> fieldList = new ArrayList<FieldDef>();
 
-    public EventType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(EventType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
