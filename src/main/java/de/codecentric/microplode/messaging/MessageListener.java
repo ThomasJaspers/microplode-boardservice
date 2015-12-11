@@ -1,6 +1,6 @@
 package de.codecentric.microplode.messaging;
 
-import de.codecentric.microplode.PlayingFieldServiceApplication;
+import de.codecentric.microplode.BoardServiceApplication;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
@@ -14,7 +14,7 @@ public class MessageListener {
     SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.setQueueNames(PlayingFieldServiceApplication.queueNamePlayingField);
+        container.setQueueNames(BoardServiceApplication.queueNamePlayingField);
         container.setMessageListener(listenerAdapter);
         return container;
     }

@@ -7,11 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import de.codecentric.microplode.messaging.MessageListener;
-
 
 @SpringBootApplication
-public class PlayingFieldServiceApplication {
+public class BoardServiceApplication {
 
 
     public static final String queueNamePlayingField = "microplode-newgame-event-playingfield";
@@ -35,6 +33,6 @@ public class PlayingFieldServiceApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(PlayingFieldServiceApplication.class, args);
+        SpringApplication.run(BoardServiceApplication.class, args);
     }
 }

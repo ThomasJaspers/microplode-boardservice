@@ -1,6 +1,8 @@
 package de.codecentric.microplode.domain;
 
 
+import org.apache.commons.lang.StringUtils;
+
 public class Field {
 
     private int posX;
@@ -17,14 +19,32 @@ public class Field {
         this.load = 0;
     }
 
-
-
     public PlayerInfo getOccupiedBy() {
         return occupiedBy;
     }
 
     public void setOccupiedBy(PlayerInfo occupiedBy) {
         this.occupiedBy = occupiedBy;
+    }
+
+    public boolean isEmpty() {
+        if (occupiedBy == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isOccupiedByPlayer(PlayerInfo player) {
+        if (isEmpty()) {
+            return false;
+        }
+
+        if (StringUtils.equals(getOccupiedBy().getId(), player.getId())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public int getLoad() {

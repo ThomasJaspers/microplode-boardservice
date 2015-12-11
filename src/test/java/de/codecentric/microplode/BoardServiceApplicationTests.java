@@ -6,8 +6,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = PlayingFieldServiceApplication.class)
-public class PlayingfieldserviceApplicationTests {
+@SpringApplicationConfiguration(classes = BoardServiceApplication.class)
+public class BoardServiceApplicationTests {
 
 	@Test
 	public void contextLoads() {

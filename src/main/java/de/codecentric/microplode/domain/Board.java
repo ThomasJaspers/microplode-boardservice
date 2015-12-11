@@ -10,11 +10,10 @@ import java.util.List;
 public class Board {
 
     private static final int BOARD_WIDTH = 10;
+
     private static final int BOARD_HEIGHT = 10;
 
     private Field[][] board;
-
-
 
     @PostConstruct
     public void init() {
@@ -24,6 +23,21 @@ public class Board {
                 board[x][y] = new Field(x, y);
             }
         }
+
+    }
+
+    public boolean isFieldEmpty(Field targetField) {
+        Field field = getBoard()[targetField.getPosX()][targetField.getPosY()];
+        return field.isEmpty();
+    }
+
+    public boolean isFieldOccupiedByPlayer(Field targetField, PlayerInfo player) {
+        Field field = getBoard()[targetField.getPosX()][targetField.getPosY()];
+        return field.isOccupiedByPlayer(player);
+    }
+
+
+    public void executeMove(Field targetField, PlayerInfo player) {
 
     }
 
