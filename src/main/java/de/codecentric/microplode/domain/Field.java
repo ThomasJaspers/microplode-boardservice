@@ -12,7 +12,14 @@ public class Field {
     private int load;
 
     private PlayerInfo occupiedBy;
-    
+
+
+    public void increaseLoad() {
+        load++;
+    }
+
+    public void decreaseLoadBy(int num) { load -= num; }
+
     public Field(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
