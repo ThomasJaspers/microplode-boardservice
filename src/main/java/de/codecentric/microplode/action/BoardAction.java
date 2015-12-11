@@ -13,7 +13,7 @@ public class BoardAction {
     @Autowired
     private Board board;
 
-    public void newGame() {
+    public void initialize() {
         board.init();
         board.debugOut();
     }

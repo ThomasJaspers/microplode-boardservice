@@ -1,36 +1,18 @@
 package de.codecentric.microplode;
 
-import de.codecentric.microplode.messaging.MessageListener;
-import org.springframework.amqp.core.*;
+import de.codecentric.microplode.configuration.MessagingConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
+@ComponentScan("de.codecentric.microplode")
 public class BoardServiceApplication {
 
-
-    public static final String queueNamePlayingField = "microplode-newgame-event-playingfield";
-
     @Autowired
-    private MessageListener messageListener;
-
-    @Bean
-    Queue queue() {
-        return new Queue(queueNamePlayingField, false);
-    }
-
-    @Bean
-    FanoutExchange exchange() {
-        return new FanoutExchange("microplode-topic-gameservice-exchange");
-    }
-
-    @Bean
-    Binding binding(Queue queue, FanoutExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange);
-    }
+    MessagingConfiguration messagingConfiguration;
 
     public static void main(String[] args) {
         SpringApplication.run(BoardServiceApplication.class, args);

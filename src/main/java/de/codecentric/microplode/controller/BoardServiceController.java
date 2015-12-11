@@ -16,7 +16,7 @@ public class BoardServiceController {
 
     @RequestMapping(value="/initialize-game", method=RequestMethod.GET)
     public @ResponseBody String Initialize() throws Exception{
-        boardAction.newGame();
+        boardAction.initialize();
         return "Game initialized";
     }
     
