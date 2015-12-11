@@ -2,10 +2,9 @@ package de.codecentric.microplode.messaging.api;
 
 public enum EventType {
 
-    NEW_GAME_EVENT("new-game-event"),
     MOVE_EVENT("move-event"),
     INITIALIZE_EVENT("initialize-event"),
-    NEXT_TURN_EVENT("next-turn-event");
+    BOARD_CHANGED_EVENT("board-changed-event");
     
     private String text;
 

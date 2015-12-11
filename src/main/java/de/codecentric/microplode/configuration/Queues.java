@@ -3,9 +3,9 @@ package de.codecentric.microplode.configuration;
 public class Queues {
 
     private Queues() {};
-    public static final String BOARDSERVICE_GAMESERVICE_EXCHANGE =
-            "microplode.boardservice.gameservice.exchange";
-    public static final String BOARDSERVICE_PRESENTATION_SERVICE_EXCHANGE =
+    public static final String GAMESERVICE_BOARDSERVICE_EXCHANGE = "microplode.gameservice.boardservice.exchange";
+    public static final String BOARDSERVICE_GAMESERVICE_EXCHANGE = "microplode.boardservice.gameservice.exchange";
+    public static final String BOARDSERVICE_PRESENTATIONSERVICE_EXCHANGE =
             "microplode.boardservice.presentationservice.exchange";
 
     public static final String GAMESERVICE_BOARDSERVICE = "microplode.gameservice.boardservice.queue";

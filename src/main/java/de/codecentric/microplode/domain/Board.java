@@ -9,9 +9,9 @@ import java.util.List;
 @Component
 public class Board {
 
-    private static final int BOARD_WIDTH = 10;
+    public static final int BOARD_WIDTH = 10;
 
-    private static final int BOARD_HEIGHT = 10;
+    public static final int BOARD_HEIGHT = 10;
 
     private Field[][] board;
 
@@ -42,7 +42,6 @@ public class Board {
         field.setOccupiedBy(player);
         field.increaseLoad();
         handleExplosions(player);
-        debugOut();
     }
 
     public Field[][] getBoard() {

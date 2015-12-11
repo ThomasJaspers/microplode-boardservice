@@ -45,21 +45,26 @@ public class MessagingConfiguration implements RabbitListenerConfigurer {
 
 
     @Bean
-    public FanoutExchange exchangeWithGameService() {
+    public FanoutExchange exchangeToBoardService() {
         return new FanoutExchange(Queues.BOARDSERVICE_GAMESERVICE_EXCHANGE);
     }
 
     @Bean
-    public FanoutExchange exchangeWithPresentationService() {
-        return new FanoutExchange(Queues.BOARDSERVICE_PRESENTATION_SERVICE_EXCHANGE);
+    public FanoutExchange exchangeToPresentationService() {
+        return new FanoutExchange(Queues.BOARDSERVICE_PRESENTATIONSERVICE_EXCHANGE);
+    }
+
+    @Bean
+    public FanoutExchange exchangeFromGameService() {
+        return new FanoutExchange(Queues.GAMESERVICE_BOARDSERVICE_EXCHANGE);
     }
 
     @Bean
     public List<Binding> binding() {
         return Arrays.asList(
-                BindingBuilder.bind(queueFromGameService()).to(exchangeWithGameService()),
-                BindingBuilder.bind(queueToBoardService()).to(exchangeWithGameService()),
-                BindingBuilder.bind(queueToPresentationService()).to(exchangeWithPresentationService()));
+                BindingBuilder.bind(queueFromGameService()).to(exchangeFromGameService()),
+                BindingBuilder.bind(queueToBoardService()).to(exchangeToBoardService()),
+                BindingBuilder.bind(queueToPresentationService()).to(exchangeToPresentationService()));
     }
 
     @Bean
