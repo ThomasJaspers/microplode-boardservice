@@ -42,26 +42,12 @@ public class Board {
         field.setOccupiedBy(player);
         field.increaseLoad();
         handleExplosions(player);
+        debugOut();
     }
 
     public Field[][] getBoard() {
         return board;
     }
-
-    public void debugOut() {
-        System.out.println();
-        for (int y = 0; y < BOARD_HEIGHT; y++) {
-            for (int x = 0; x < BOARD_WIDTH; x++) {
-                Field field = board[x][y];
-                if (field.getLoad() > 0) {
-                    System.out.print(field.getOccupiedBy().getRepresentation() + " ");
-                }
-                System.out.print(field.getLoad() + "\t");
-            }
-            System.out.println();
-        }
-    }
-
 
     private void handleExplosions(PlayerInfo activePlayer) {
 
@@ -117,14 +103,14 @@ public class Board {
             field.decreaseLoadBy(8);
         }
 
-        handleExplosionForNeighbouringField(field.getPosX(), field.getPosX(), 1, -1, player);
-        handleExplosionForNeighbouringField(field.getPosX(), field.getPosX(), 1, 0, player);
-        handleExplosionForNeighbouringField(field.getPosX(), field.getPosX(), 1, 1, player);
-        handleExplosionForNeighbouringField(field.getPosX(), field.getPosX(), 0, 1, player);
-        handleExplosionForNeighbouringField(field.getPosX(), field.getPosX(), -1, 1, player);
-        handleExplosionForNeighbouringField(field.getPosX(), field.getPosX(), -1, 0, player);
-        handleExplosionForNeighbouringField(field.getPosX(), field.getPosX(), -1, -1, player);
-        handleExplosionForNeighbouringField(field.getPosX(), field.getPosX(), 0, -1, player);
+        handleExplosionForNeighbouringField(field.getPosX(), field.getPosY(), 1, -1, player);
+        handleExplosionForNeighbouringField(field.getPosX(), field.getPosY(), 1, 0, player);
+        handleExplosionForNeighbouringField(field.getPosX(), field.getPosY(), 1, 1, player);
+        handleExplosionForNeighbouringField(field.getPosX(), field.getPosY(), 0, 1, player);
+        handleExplosionForNeighbouringField(field.getPosX(), field.getPosY(), -1, 1, player);
+        handleExplosionForNeighbouringField(field.getPosX(), field.getPosY(), -1, 0, player);
+        handleExplosionForNeighbouringField(field.getPosX(), field.getPosY(), -1, -1, player);
+        handleExplosionForNeighbouringField(field.getPosX(), field.getPosY(), 0, -1, player);
     }
 
     private boolean isCornerField(Field field) {
@@ -156,4 +142,19 @@ public class Board {
             targetField.increaseLoad();
         }
     }
+
+    public void debugOut() {
+        System.out.println();
+        for (int y = 0; y < BOARD_HEIGHT; y++) {
+            for (int x = 0; x < BOARD_WIDTH; x++) {
+                Field field = board[x][y];
+                if (field.getLoad() > 0) {
+                    System.out.print(field.getOccupiedBy().getRepresentation() + " ");
+                }
+                System.out.print(field.getLoad() + "\t");
+            }
+            System.out.println();
+        }
+    }
+
 }
